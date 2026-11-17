@@ -29,9 +29,12 @@ spring:
 
   flyway:
     enabled: true
+    locations: classpath:db/migration
     schemas: mural_fyi
     default-schema: mural_fyi
     create-schemas: true
+    baseline-on-migrate: false
+    validate-on-migrate: true
 
   servlet:
     multipart:

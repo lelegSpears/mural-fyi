@@ -89,7 +89,8 @@ public class SecurityConfig {
 
         config.setAllowedOrigins(List.of(
                 "http://localhost:5000",
-                "http://127.0.0.1:5000"
+                "http://127.0.0.1:5000",
+                "https://candid-semolina-6ef61d.netlify.app"
         ));
 
         config.setAllowedMethods(List.of(
