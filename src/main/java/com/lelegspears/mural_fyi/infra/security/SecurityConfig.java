@@ -84,13 +84,12 @@ public class SecurityConfig {
     // Adicionei essa configuração CORS para o Flutter Web
     @Bean
     public UrlBasedCorsConfigurationSource corsConfigurationSource() {
-
         CorsConfiguration config = new CorsConfiguration();
 
-        config.setAllowedOrigins(List.of(
-                "http://localhost:5000",
-                "http://127.0.0.1:5000",
-                "https://candid-semolina-6ef61d.netlify.app"
+        config.setAllowedOriginPatterns(List.of(
+                "http://localhost:*",
+                "http://127.0.0.1:*",
+                "https://*.netlify.app"
         ));
 
         config.setAllowedMethods(List.of(
@@ -102,11 +101,7 @@ public class SecurityConfig {
                 "OPTIONS"
         ));
 
-        config.setAllowedHeaders(List.of(
-                "Authorization",
-                "Content-Type",
-                "Accept"
-        ));
+        config.setAllowedHeaders(List.of("*"));
 
         UrlBasedCorsConfigurationSource source =
                 new UrlBasedCorsConfigurationSource();
