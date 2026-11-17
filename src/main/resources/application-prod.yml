@@ -1,0 +1,62 @@
+server:
+  port: ${PORT:8080}
+
+spring:
+  application:
+    name: mural-fyi
+
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 3
+
+  h2:
+    console:
+      enabled: false
+
+  jpa:
+    open-in-view: false
+    show-sql: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        default_schema: mural_fyi
+        format_sql: false
+
+  flyway:
+    enabled: true
+    schemas: mural_fyi
+    default-schema: mural_fyi
+    create-schemas: true
+
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 5MB
+      max-request-size: 10MB
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+
+app:
+  upload:
+    dir: uploads
+  jwt:
+    secret: ${JWT_SECRET}
+    expiration: 1440
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info
+  endpoint:
+    health:
+      show-details: never

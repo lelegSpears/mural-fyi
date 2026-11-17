@@ -1,0 +1,17 @@
+package com.lelegspears.mural_fyi.exception.record;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import java.time.Instant;
+import java.util.List;
+
+public record ValidationError(
+        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "UTC")
+        Instant timestamp,
+        Integer status,
+        String error,
+        String message,
+        String path,
+        List<FieldMessage> errors
+) {
+}
